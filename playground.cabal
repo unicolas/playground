@@ -28,6 +28,7 @@ library
       Training.CompareVersions
       Training.PrizeDraw
       Training.Section
+      Training.StringsMix
       Training.Which
       Training.XO
   other-modules:
@@ -59,6 +60,7 @@ test-suite playground-test
       Training.CompareVersionsSpec
       Training.PrizeDrawSpec
       Training.SectionSpec
+      Training.StringMixSpec
       Training.WhichSpec
       Training.XOSpec
       Paths_playground
