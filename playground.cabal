@@ -25,6 +25,8 @@ library
   exposed-modules:
       Course.Hw01.Hanoi
       Course.Hw01.Validator
+      Course.Hw02.Log
+      Course.Hw02.LogAnalysis
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
