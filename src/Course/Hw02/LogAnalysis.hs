@@ -14,9 +14,7 @@ parse s = map parseMessage (lines s)
 
 timestamp :: LogMessage -> Int
 timestamp lm = case lm of
-  LogMessage Info ts _ -> ts
-  LogMessage Warning ts _ -> ts
-  LogMessage (Error _) ts _ -> ts
+  LogMessage _ ts _ -> ts
   Unknown _ -> 0
 
 insert :: LogMessage -> MessageTree -> MessageTree
@@ -38,14 +36,12 @@ inOrder t = case t of
 
 whatWentWrong :: [LogMessage] -> [String]
 whatWentWrong lst = map message (inOrder (build (filter severity50 lst)))
-  where 
+  where
     severity50 lm = case lm of
       LogMessage (Error e) _ _ -> e >= 50
       _ -> False
 
 message :: LogMessage -> String
 message m = case m of
-  LogMessage Info _ s -> s
-  LogMessage Warning _ s -> s
-  LogMessage (Error _) _ s -> s
+  LogMessage _ _ s -> s
   Unknown s -> s
