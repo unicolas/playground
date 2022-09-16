@@ -27,6 +27,7 @@ library
       Course.Hw01.Validator
       Course.Hw02.Log
       Course.Hw02.LogAnalysis
+      Course.Hw03.Golf
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
