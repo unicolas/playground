@@ -1,4 +1,4 @@
-module Course.Hw04.Folds (fun1, fun1', fun2, fun2') where
+module Course.Hw04.Folds (fun1, fun1', fun2, fun2', foldTree) where
 
 import Data.List (foldl')
 
@@ -62,3 +62,37 @@ fun2' = foldl' (+) 0 . filter even . takeWhile (>1) . iterate generator
 
 -- >>> fun2 10 == fun2' 10
 -- True
+
+
+data Tree a
+  = Leaf
+  | Node Integer (Tree a) a (Tree a)
+  deriving (Show, Eq)
+
+foldTree :: [a] -> Tree a
+foldTree = foldr ins Leaf
+  where
+    ins e tree = case tree of
+      Leaf -> Node 0 Leaf e Leaf
+      Node _ left a right -> case compare leftHeigth rightHeigth of
+        GT -> Node (leftHeigth + 1) left a (ins e right)
+        _ -> Node (rightHeigth + 1) (ins e left) a right
+        where
+          leftHeigth = heigth left
+          rightHeigth = heigth right
+          heigth n = case n of
+            Leaf -> 0
+            Node h' _ _ _ -> h'
+
+-- >>> foldTree "ABCDEFGHIJ"
+
+-- Node 3
+--   (Node 2
+--     (Node 1 (Node 0 Leaf 'E' Leaf) 'H' Leaf )
+--     'I'
+--     (Node 1 (Node 0 Leaf 'A' Leaf) 'D' Leaf ))
+--   'J'
+--   (Node 2
+--     (Node 1 (Node 0 Leaf 'C' Leaf) 'F' Leaf )
+--     'G'
+--     (Node 0 Leaf 'B' Leaf))
