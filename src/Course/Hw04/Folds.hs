@@ -1,7 +1,5 @@
 module Course.Hw04.Folds (fun1, fun1', fun2, fun2', foldTree) where
 
-import Data.List (foldl')
-
 fun1 :: [Integer] -> Integer
 fun1 [] = 1
 fun1 (x:xs)
@@ -10,7 +8,7 @@ fun1 (x:xs)
 
 
 fun1' :: [Integer] -> Integer
-fun1' = foldl' (*) 1 . map (2 -) . filter even
+fun1' = product . map (2 -) . filter even
 
 -- >>> fun1 [1, 2, 3, 4, 5, 6] == fun1' [1, 2, 3, 4, 5, 6]
 -- True
@@ -26,7 +24,7 @@ fun2 n
   | otherwise = fun2 (3 * n + 1)
 
 fun2' :: Integer -> Integer
-fun2' = foldl' (+) 0 . filter even . takeWhile (>1) . iterate generator
+fun2' = sum . filter even . takeWhile (>1) . iterate generator
   where
     generator n = if even n then n `div` 2 else 3 * n + 1
 
