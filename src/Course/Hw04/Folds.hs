@@ -1,4 +1,6 @@
-module Course.Hw04.Folds (fun1, fun1', fun2, fun2', foldTree) where
+module Course.Hw04.Folds (fun1, fun1', fun2, fun2', foldTree, map', xor) where
+
+import Data.List (foldl')
 
 fun1 :: [Integer] -> Integer
 fun1 [] = 1
@@ -94,3 +96,20 @@ foldTree = foldr ins Leaf
 --     (Node 1 (Node 0 Leaf 'C' Leaf) 'F' Leaf )
 --     'G'
 --     (Node 0 Leaf 'B' Leaf))
+
+
+xor :: [Bool] -> Bool
+xor = foldl' (\ a b -> (a || b) && not (a && b)) False
+
+-- >>> xor [False, True, False] == True
+-- True
+
+-- >>> xor [False, True, False, False, True] == False
+-- True
+
+
+map' :: (a -> b) -> [a] -> [b]
+map' f = foldr (\ e acc -> (f e) : acc) []
+
+-- >>> map (+1) [0, 1, 2, 3] == map' (+1) [0, 1, 2, 3]
+-- True
