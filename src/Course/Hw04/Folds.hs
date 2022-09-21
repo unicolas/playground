@@ -1,6 +1,16 @@
-module Course.Hw04.Folds (fun1, fun1', fun2, fun2', foldTree, map', xor) where
+module Course.Hw04.Folds
+  ( foldTree
+  , fun1
+  , fun1'
+  , fun2
+  , fun2'
+  , map'
+  , sieveSundaram
+  , sieveSundaram'
+  , xor
+  ) where
 
-import Data.List (foldl')
+import Data.List (foldl', (\\))
 
 fun1 :: [Integer] -> Integer
 fun1 [] = 1
@@ -113,3 +123,22 @@ map' f = foldr (\ e acc -> (f e) : acc) []
 
 -- >>> map (+1) [0, 1, 2, 3] == map' (+1) [0, 1, 2, 3]
 -- True
+
+
+cartProd :: [a] -> [b] -> [(a, b)]
+cartProd xs ys = [(x,y) | x <- xs, y <- ys]
+
+ij2ijForms :: Integer -> [Integer]
+ij2ijForms n = map (\ (i, j) -> i + j + 2 * i * j) (cartProd [1..n] [1..n])
+
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = map ((1 +) . (2 *)) . filter (`notElem` ij2ijForms n) $ [1..n]
+
+sieveSundaram' :: Integer -> [Integer]
+sieveSundaram' n = map (\ x -> 2 * x + 1) ([1..n] \\ ij2ijForms n)
+
+-- >>> sieveSundaram 20
+-- [3,5,7,11,13,17,19,23,29,31,37,41]
+
+-- >>> sieveSundaram' 20
+-- [3,5,7,11,13,17,19,23,29,31,37,41]
