@@ -29,6 +29,10 @@ library
       Course.Hw02.LogAnalysis
       Course.Hw03.Golf
       Course.Hw04.Folds
+      Course.HW05.Calc
+      Course.HW05.ExprT
+      Course.HW05.Parser
+      Course.HW05.StackVM
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
