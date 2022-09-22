@@ -1,7 +1,13 @@
+{-# LANGUAGE FlexibleInstances #-}
+
 module Course.HW05.Calc (eval, evalStr, Expr (..)) where
 
 import Course.HW05.ExprT (ExprT (..))
 import Course.HW05.Parser (parseExp)
+import qualified Course.HW05.StackVM as StackVm
+  ( Program
+  , StackExp (Add, PushI, Mul)
+  )
 
 eval :: ExprT -> Integer
 eval expr = case expr of
@@ -104,3 +110,17 @@ testSat = testExp :: Maybe Mod7
 
 -- >>> testSat
 -- Just (Mod7 0)
+
+
+instance Expr StackVm.Program where
+  lit e = [StackVm.PushI e]
+
+  mul x y = x ++ y ++ [StackVm.Mul]
+
+  add x y = x ++ y ++ [StackVm.Add]
+
+compile :: String -> Maybe StackVm.Program
+compile = parseExp lit add mul
+
+-- >>> compile "(3 * -4) + 5"
+-- Just [PushI 3,PushI (-4),Mul,PushI 5,Add]
