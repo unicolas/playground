@@ -33,6 +33,7 @@ library
       Course.HW05.ExprT
       Course.HW05.Parser
       Course.HW05.StackVM
+      Course.Hw06.Fibonacci
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
