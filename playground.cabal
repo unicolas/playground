@@ -37,6 +37,7 @@ library
       Course.Hw07.Buffer
       Course.Hw07.Editor
       Course.Hw07.JoinList
+      Course.Hw07.Scrabble
       Course.Hw07.Sized
       Course.Hw07.StringBufEditor
       Course.Hw07.StringBuffer
