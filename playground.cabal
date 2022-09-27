@@ -56,6 +56,52 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , mtl
+  default-language: Haskell2010
+
+executable editor-exe
+  main-is: Course/Hw07/StringBufEditor.hs
+  other-modules:
+      Course.Hw01.Hanoi
+      Course.Hw01.Validator
+      Course.Hw02.Log
+      Course.Hw02.LogAnalysis
+      Course.Hw03.Golf
+      Course.Hw04.Folds
+      Course.HW05.Calc
+      Course.HW05.ExprT
+      Course.HW05.Parser
+      Course.HW05.StackVM
+      Course.Hw06.Fibonacci
+      Course.Hw07.Buffer
+      Course.Hw07.Editor
+      Course.Hw07.JoinList
+      Course.Hw07.Scrabble
+      Course.Hw07.Sized
+      Course.Hw07.StringBuffer
+      Course.Hw08.Party
+      Lib
+      Model.Comment
+      Model.Context
+      Model.Id
+      Model.IdTest
+      Model.Post
+      Model.User
+      Training.BreakingChocolate
+      Training.CompareVersions
+      Training.PrizeDraw
+      Training.Section
+      Training.StringsMix
+      Training.Which
+      Training.XO
+      Paths_playground
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -main-is Course.Hw07.StringBufEditor
+  build-depends:
+      base >=4.7 && <5
+    , mtl
+    , playground
   default-language: Haskell2010
 
 executable playground-exe
@@ -67,6 +113,7 @@ executable playground-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , mtl
     , playground
   default-language: Haskell2010
 
@@ -90,5 +137,6 @@ test-suite playground-test
   build-depends:
       base >=4.7 && <5
     , hspec
+    , mtl
     , playground
   default-language: Haskell2010
