@@ -43,6 +43,8 @@ library
       Course.Hw07.StringBuffer
       Course.Hw08.Employee
       Course.Hw08.Party
+      Course.Hw10.AParser
+      Course.Hw11.SExpr
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
@@ -84,6 +86,8 @@ executable editor-exe
       Course.Hw07.StringBuffer
       Course.Hw08.Employee
       Course.Hw08.Party
+      Course.Hw10.AParser
+      Course.Hw11.SExpr
       Lib
       Training.BreakingChocolate
       Training.CompareVersions
