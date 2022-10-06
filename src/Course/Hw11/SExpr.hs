@@ -1,4 +1,4 @@
-module SExpr where
+module Course.Hw11.SExpr where
 
 import Course.Hw10.AParser (Parser, runParser, satisfy, char, posInt)
 import Control.Applicative
